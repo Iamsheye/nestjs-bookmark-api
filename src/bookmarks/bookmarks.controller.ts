@@ -9,11 +9,13 @@ import {
   Patch,
   Delete,
 } from "@nestjs/common";
-import { BookmarksService } from "./bookmarks.service";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { AuthGuard } from "@nestjs/passport";
+import { BookmarksService } from "./bookmarks.service";
 import { GetUser } from "src/auth/decorator/get-user.decorator";
 import { CreateBookmarkDto, EditBookmarkDto } from "./dto";
-
+@ApiBearerAuth()
+@ApiTags("Bookmarks")
 @UseGuards(AuthGuard("jwt"))
 @Controller("bookmarks")
 export class BookmarksController {

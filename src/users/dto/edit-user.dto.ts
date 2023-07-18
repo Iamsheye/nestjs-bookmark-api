@@ -1,3 +1,4 @@
+import { ApiProperty } from "@nestjs/swagger";
 import { IsEmail, IsEnum, IsOptional, IsString } from "class-validator";
 
 export class EditUserDto {
@@ -16,5 +17,6 @@ export class EditUserDto {
   @IsString()
   @IsOptional()
   @IsEnum(["USER", "ADMIN"])
+  @ApiProperty({ type: "", enum: ["USER", "ADMIN"] })
   role?: "USER" | "ADMIN";
 }
